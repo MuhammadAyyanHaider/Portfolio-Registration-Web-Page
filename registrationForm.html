@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; background: linear-gradient(135deg, #2b004f, #3b006e); color: white; }
+    header { background: black; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 20px; letter-spacing: 2px; }
+    nav a { background: #0a3d52; color: white; text-decoration: none; margin-left: 10px; padding: 8px 16px; border-radius: 6px; font-size: 14px; }
+    nav a:hover { background: #0f5f7d; }
+    .form-container { background: rgba(0, 0, 0, 0.4); width: 500px; margin: 50px auto; padding: 30px; border-radius: 12px; }
+    .form-container h2 { text-align: center; margin-bottom: 20px; }
+    label { display: block; margin-top: 12px; }
+    input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: none; }
+    input[type="radio"], input[type="checkbox"] { width: auto; margin-right: 5px; }
+    .inline { margin-top: 8px; }
+    button { margin-top: 20px; width: 100%; padding: 10px; background: #f1c40f; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #d4ac0d; }
+    footer { background: black; text-align: center; padding: 15px; margin-top: 40px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>PORTFOLIO</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="registrationForm.html">Registration</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+      <a href="#">Shop</a>
+      <a href="#">Account</a>
+    </nav>
+  </header>
+
+  <div class="form-container">
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm">
+
+      <label>Name</label>
+      <input type="text" pattern="[A-Za-z0-9 ]+" title="Only alphabets and numbers are allowed" required>
+
+      <label>Email</label>
+      <input type="email" id="email" placeholder="xyz@gmail.com" required>
+
+      <label>Password</label>
+      <input type="password" required>
+
+      <label>Phone</label>
+      <input type="tel" id="phone" required>
+
+      <label>Date of Birth</label>
+      <input type="date" required>
+
+      <label>City</label>
+      <select required>
+        <option>Rawalpindi</option>
+        <option>Islamabad</option>
+        <option>Lahore</option>
+        <option>Karachi</option>
+      </select>
+
+      <label>Favorite Color</label>
+      <input type="color">
+
+      <label>Suitable Time</label>
+      <input type="time">
+
+      <label>Gender</label>
+      <div class="inline">
+        <input type="radio" name="gender" required> Male
+        <input type="radio" name="gender"> Female
+      </div>
+
+      <label>Favorite Subjects</label>
+      <div class="inline">
+        <input type="checkbox"> Color Theory
+        <input type="checkbox"> Typography
+        <input type="checkbox"> Layout
+      </div>
+
+      <label>Profile Picture</label>
+      <input type="file">
+
+      <label>Address</label>
+      <textarea rows="3"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <footer>© Copyrights</footer>
+
+  <script>
+    // Phone input: allow only numbers
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('keypress', function(e) {
+      if (!/[0-9]/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+
+    // Custom email validation
+    const form = document.getElementById('registrationForm');
+    const emailInput = document.getElementById('email');
+
+    form.addEventListener('submit', function(e) {
+      if (!emailInput.value.includes('@')) {
+        alert(`Please include an '@' in the email address. "${emailInput.value}" is missing an '@'.`);
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
